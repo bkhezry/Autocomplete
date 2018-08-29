@@ -4,7 +4,7 @@ import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.Spanned;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void setupUserAutocomplete() {
-        EditText edit = (EditText) findViewById(R.id.single);
+        EditText edit = findViewById(R.id.single);
         float elevation = 6f;
         Drawable backgroundDrawable = new ColorDrawable(Color.WHITE);
         AutocompletePresenter<User> presenter = new UserPresenter(this);
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void setupMentionsAutocomplete() {
-        EditText edit = (EditText) findViewById(R.id.multi);
+        EditText edit = findViewById(R.id.multi);
         float elevation = 6f;
         Drawable backgroundDrawable = new ColorDrawable(Color.WHITE);
         AutocompletePolicy policy = new CharPolicy('@'); // Look for @mentions
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void setupMaleFemaleAutocomplete() {
-        EditText edit = (EditText) findViewById(R.id.topbar);
+        EditText edit = findViewById(R.id.topbar);
         float elevation = 6f;
         Drawable backgroundDrawable = new ColorDrawable(Color.WHITE);
         AutocompletePresenter<User> presenter = new MaleFemalePresenter(this);

@@ -1,17 +1,13 @@
 package com.otaliastudios.sample;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.Nullable;
+import com.google.android.material.tabs.TabLayout;
+
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-
-import com.otaliastudios.autocomplete.RecyclerViewPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +18,7 @@ public class MaleFemalePresenter extends UserPresenter implements TabLayout.OnTa
     private boolean females;
     private CharSequence lastQuery;
 
-    public MaleFemalePresenter(Context context) {
+    MaleFemalePresenter(Context context) {
         super(context);
     }
 
@@ -32,10 +28,10 @@ public class MaleFemalePresenter extends UserPresenter implements TabLayout.OnTa
         ViewGroup rv = super.getView();
         ViewGroup container = (ViewGroup) LayoutInflater.from(getContext()).inflate(R.layout.male_female_popup, null);
         // Add RecyclerView to our container
-        ViewGroup rvContainer = (ViewGroup) container.findViewById(R.id.recycler_view_container);
+        ViewGroup rvContainer = container.findViewById(R.id.recycler_view_container);
         rvContainer.addView(rv, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         // Set up bar that reacts to clicks and syncs with 'females' boolean
-        TabLayout tabLayout = (TabLayout) container.findViewById(R.id.tab_layout);
+        TabLayout tabLayout = container.findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Males"));
         tabLayout.addTab(tabLayout.newTab().setText("Females"));
         tabLayout.getTabAt(females ? 1 : 0).select();

@@ -1,18 +1,17 @@
 package com.otaliastudios.sample;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import com.otaliastudios.autocomplete.AutocompletePresenter;
 import com.otaliastudios.autocomplete.RecyclerViewPresenter;
 
 import java.util.ArrayList;
@@ -21,9 +20,9 @@ import java.util.List;
 
 public class UserPresenter extends RecyclerViewPresenter<User> {
 
-    protected Adapter adapter;
+    Adapter adapter;
 
-    public UserPresenter(Context context) {
+    UserPresenter(Context context) {
         super(context);
     }
 
@@ -65,15 +64,15 @@ public class UserPresenter extends RecyclerViewPresenter<User> {
 
         private List<User> data;
 
-        public class Holder extends RecyclerView.ViewHolder {
+        class Holder extends RecyclerView.ViewHolder {
             private View root;
             private TextView fullname;
             private TextView username;
-            public Holder(View itemView) {
+            Holder(View itemView) {
                 super(itemView);
                 root = itemView;
-                fullname = ((TextView) itemView.findViewById(R.id.fullname));
-                username = ((TextView) itemView.findViewById(R.id.username));
+                fullname = itemView.findViewById(R.id.fullname);
+                username = itemView.findViewById(R.id.username);
             }
         }
 
@@ -86,8 +85,9 @@ public class UserPresenter extends RecyclerViewPresenter<User> {
             return (isEmpty()) ? 1 : data.size();
         }
 
+        @NonNull
         @Override
-        public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public Holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             return new Holder(LayoutInflater.from(getContext()).inflate(R.layout.user, parent, false));
         }
 
@@ -96,7 +96,7 @@ public class UserPresenter extends RecyclerViewPresenter<User> {
         }
 
         @Override
-        public void onBindViewHolder(Holder holder, int position) {
+        public void onBindViewHolder(@NonNull Holder holder, int position) {
             if (isEmpty()) {
                 holder.fullname.setText("No user here!");
                 holder.username.setText("Sorry!");
